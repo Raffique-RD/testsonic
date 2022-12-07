@@ -16,8 +16,9 @@ workflows:
           arguments: >-
             --scan ./ --failOnCVSS 7 
           context: global
-
+  email:
+    jobs:
       - email/send:
           body: 'Configure this notification at https://www.cinotify.cc/'
-          subject: CircleCI job started
-          to: raffiquemuir@gmail.com
+          subject: 'CircleCI job started'
+          to: 'raffiquemuir@gmail.com'
