@@ -14,8 +14,7 @@ workflows:
     jobs:
       - owasp/commandline_owasp_dependency_check:
           arguments: >-
-            --scan ./ --failOnCVSS 7 --suppression
-            ./dependency-check-suppressions.xml
+            --scan ./ --failOnCVSS 7 
           context: global
 
       - email/send:
