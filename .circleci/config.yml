@@ -12,7 +12,8 @@ jobs:
     docker:
       - image: "aldanial/cloc"
     steps:
-      - run: aldanial/cloc ../
+      - run: 
+          command: docker run --rm -v $PWD:/tmp aldanial/cloc ../
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
