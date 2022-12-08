@@ -12,6 +12,7 @@ jobs:
     docker:
       - image: "aldanial/cloc"
     steps:
+      - checkout
       - run: docker run --rm -v $PWD:/tmp aldanial/cloc ../
 
 # Invoke jobs via workflows
