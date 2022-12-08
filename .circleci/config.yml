@@ -12,7 +12,7 @@ jobs:
     docker:
       - image: "aldanial/cloc"
     steps:
-      - run: cloc ../
+      - run: aldanial/cloc ../
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
