@@ -5,7 +5,8 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
   owasp: entur/owasp@0.0.18
-  email: cinotify/email@1.2.0
+  mailer-orb: sudiptog81/mailer-orb@1.0.0
+  #email: cinotify/email@1.2.0
   
 jobs:
   cloc:
@@ -43,7 +44,17 @@ workflows:
           context: global
   email:
     jobs:
-      - email/send:
-          body: 'Testing use of CINotify'
-          subject: Testing purposes
+      - mailer-orb/mail:
+          body: |-
+            Sample Mail
+            Regards,
+            Circle CI
+          from: softwaresecuredtelemetry@gmail
+          subject: Test 
           to: raffiquemuir@yahoo.com
+  # email:
+  #   jobs:
+  #     - email/send:
+  #         body: 'Testing use of CINotify'
+  #         subject: Testing purposes
+  #         to: raffiquemuir@yahoo.com
