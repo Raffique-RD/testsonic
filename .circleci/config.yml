@@ -44,6 +44,6 @@ workflows:
   email:
     jobs:
       - email/send:
-          body: 'Configure this notification at https://www.cinotify.cc/'
-          subject: 'CircleCI job started'
-          to: 'raffiquemuir@gmail.com'
+          body: 'Testing use of CINotify'
+          subject: Testing purposes
+          to: raffiquemuir@yahoo.com
