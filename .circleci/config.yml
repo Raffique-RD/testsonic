@@ -22,6 +22,7 @@ jobs:
       - run: 
           command: |
            git clone https://github.com/Raffique-RD/testsonic.git 
+           ls
            aldanial/cloc testsonic/
 
 # Invoke jobs via workflows
