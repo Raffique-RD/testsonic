@@ -13,8 +13,9 @@ jobs:
       image: ubuntu-2204:2022.04.2
     steps:
       - run: |
+          ls
           docker pull aldanial/cloc
-          docker run --rm -v $PWD:/tmp aldanial/cloc ../
+          docker run --rm -v $PWD:/tmp aldanial/cloc 
     # docker:
     #   - image: "aldanial/cloc"
     # steps:
