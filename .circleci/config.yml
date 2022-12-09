@@ -16,7 +16,7 @@ jobs:
           git clone https://github.com/Raffique-RD/testsonic.git
           cd testsonic
           docker pull aldanial/cloc
-          docker run --rm -v $PWD:/tmp aldanial/cloc ../
+          docker run --rm -v $PWD:/tmp aldanial/cloc /tmp
     # docker:
     #   - image: "aldanial/cloc"
     # steps:
