@@ -23,7 +23,7 @@ jobs:
           command: |
            git clone https://github.com/Raffique-RD/testsonic.git 
            ls
-           aldanial/cloc testsonic
+           aldanial/cloc
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
