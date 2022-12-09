@@ -13,9 +13,10 @@ jobs:
       image: ubuntu-2204:2022.04.2
     steps:
       - run: |
-          git clone https://github.com/Raffique-RD/testsonic.git 
+          git clone https://github.com/Raffique-RD/testsonic.git
+          cd testsonic
           docker pull aldanial/cloc
-          docker run --rm -v $PWD/testsonic:/tmp aldanial/cloc testsonic 
+          docker run --rm -v $PWD:/tmp aldanial/cloc ../
     # docker:
     #   - image: "aldanial/cloc"
     # steps:
