@@ -10,7 +10,7 @@ jobs:
       - image: aldanial/cloc:latest
     steps:
       - run:
-          command: cloc . --out=cloc.txt
+          command: /usr/src/cloc . --out=cloc.txt
       - persist_to_workspace:
           root: .
           paths: 
