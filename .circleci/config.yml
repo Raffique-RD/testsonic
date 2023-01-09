@@ -15,8 +15,10 @@ jobs:
       - checkout
       - run:
           command: |
-            /usr/share/dependency-check/bin/./dependency-check.sh --scan ./ --out ./
+            /usr/share/dependency-check/bin/./dependency-check.sh --scan ./ -o ./ -f "JSON"
             ls
+            owasp=`cat dependency-check-report.json`
+            curl --request POST 'https://www.cinotify.cc/api/notify' -d "to=raffiquemuir@yahoo.com&subject=building main&body=$owasp"
 
 
 
