@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           command: |
-            ~/.owasp/dependency-check/bin/dependency-check.sh
+            ./owasp/dependency-check/bin/dependency-check.sh
             --scan ./
 
 
