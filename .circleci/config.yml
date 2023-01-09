@@ -15,13 +15,7 @@ jobs:
       - checkout
       - run:
           command: |
-            ls
-            cd ..
-            ls
-            cd ..
-            ls
-            cd ..
-            ls
+            ./bin/dependency-check.sh ./
 
 
 
