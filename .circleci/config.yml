@@ -12,7 +12,6 @@ jobs:
       - checkout
       - run:
           command: |
-            docker pull aldanial/cloc
             ls
 
 
