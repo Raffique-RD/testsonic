@@ -7,13 +7,12 @@ orbs:
 jobs:
   run_owasp_cloc_email:
     docker:
-      - image: ubuntu-2204:2022.04.2 
+      - image: aldanial/cloc
     steps:
       - checkout
       - run:
           command: |
-            docker pull aldanial/cloc
-            ls
+            /usr/src/cloc ./
 
 
 
