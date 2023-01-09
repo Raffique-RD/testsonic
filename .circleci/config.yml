@@ -5,31 +5,22 @@ orbs:
   email: cinotify/email@1.2.0
 
 jobs:
-  run_cloc:
+  run_owasp_cloc_email:
     docker:
-      - image: aldanial/cloc:latest
+      - image: cimg/base:2021.04
     steps:
+      - checkout
       - run:
-          command: /usr/src/cloc . --out=cloc.txt
-      - persist_to_workspace:
-          root: .
-          paths: 
-            - cloc.txt
-    environment:
-      CLOC: cloc.txt
+          command: |
+            docker pull aldanial/cloc
+            ls
+
 
 
 workflows:
   build-and-send-report:
     jobs:
-      - run_cloc
-      - owasp/commandline_owasp_dependency_check:
-          arguments: >-
-            --scan ./ --failOnCVSS 7 
-          context: global
-      - email/send:
-          subject: Testing purposes
-          to: raffiquemuir@yahoo.com
-          body: 'Testing use of CINotify $(CLOC)'
+      - run_owasp_cloc_email
+
 
       
