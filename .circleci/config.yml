@@ -15,7 +15,7 @@ jobs:
       - checkout
       - run:
           command: |
-            ./dependency-check.sh --scan ./
+            ./dependency-check/bin/dependency-check.sh --scan ./
 
 
 
