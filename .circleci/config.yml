@@ -1,3 +1,6 @@
+#./owasp/dependency-check/bin/dependency-check.sh
+#            --scan ./
+
 version: 2.1
 
 orbs:
@@ -12,8 +15,8 @@ jobs:
       - checkout
       - run:
           command: |
-            ./owasp/dependency-check/bin/dependency-check.sh
-            --scan ./
+            cd /
+            ls
 
 
 
