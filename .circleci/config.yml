@@ -12,10 +12,9 @@ jobs:
     docker:
       - image: owasp/dependency-check
     steps:
-      - checkout
       - run:
           command: |
-            ./dependency-check/bin/dependency-check.sh --scan ./
+            ./usr/share/dependency-check/bin/dependency-check.sh --scan ./
 
 
 
