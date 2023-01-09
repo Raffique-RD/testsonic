@@ -15,6 +15,7 @@ jobs:
       - checkout
       - run:
           command: |
+            cd ..
             ls
 
 
