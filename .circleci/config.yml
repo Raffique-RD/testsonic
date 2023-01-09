@@ -16,7 +16,9 @@ jobs:
       - run:
           command: |
             cd /
-            cd usr/share
+            cd usr/share/dependency-check
+            ls
+            cd bin
             ls
 
 
