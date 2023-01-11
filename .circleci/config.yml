@@ -10,12 +10,12 @@ jobs:
           docker pull aldanial/cloc
           docker pull owasp/dependency-check
           pwd
-# #          docker cp /. aldanial/cloc:/tmp/
-#           docker exec -it aldanial/cloc 
-#           /usr/src/cloc /tmp
-#           ls
-#           exit
-#           ls
+          docker cp /home/circleci/project/. aldanial/cloc:/tmp/
+          docker exec -it aldanial/cloc 
+          /usr/src/cloc /tmp
+          ls
+          exit
+          ls
 workflows:
   tasks:
     jobs:
