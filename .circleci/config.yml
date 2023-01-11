@@ -9,12 +9,13 @@ jobs:
           ls
           docker pull aldanial/cloc
           docker pull owasp/dependency-check
-          docker cp /. aldanial/cloc:/tmp/
-          docker exec -it aldanial/cloc 
-          /usr/src/cloc /tmp
-          ls
-          exit
-          ls
+          pwd
+# #          docker cp /. aldanial/cloc:/tmp/
+#           docker exec -it aldanial/cloc 
+#           /usr/src/cloc /tmp
+#           ls
+#           exit
+#           ls
 workflows:
   tasks:
     jobs:
