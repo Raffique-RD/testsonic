@@ -9,7 +9,7 @@ jobs:
           ls
           docker pull aldanial/cloc
           docker pull owasp/dependency-check
-          docker cp ./. aldanial/cloc:/tmp/
+          docker cp /. aldanial/cloc:/tmp/
           docker exec -it aldanial/cloc 
           /usr/src/cloc /tmp
           ls
