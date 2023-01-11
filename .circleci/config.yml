@@ -1,33 +1,14 @@
-#./owasp/dependency-check/bin/dependency-check.sh
-#            --scan ./
-
 version: 2.1
-
 orbs:
-  owasp: entur/owasp@0.0.18
-  email: cinotify/email@1.2.0
-
-jobs:
-  run_owasp_cloc_email:
-    docker:
-      - image: owasp/dependency-check
-    steps:
-      - checkout
-      - run:
-          command: |
-            /usr/share/dependency-check/bin/./dependency-check.sh --scan ./ -o ./ -f "JSON"
-            ls
-            owasp=`cat dependency-check-report.json`
-            apt install curl -y
-            curl --request POST 'https://www.cinotify.cc/api/notify' -d "to=raffiquemuir@yahoo.com&subject=building main&body=$owasp"
-
-
-
-
+  mailer-orb: sudiptog81/mailer-orb@1.0.0
 workflows:
-  build-and-send-report:
+  use-my-orb:
     jobs:
-      - run_owasp_cloc_email
-
-
-      
+      - mailer-orb/mail:
+          body: |-
+            Sample Mail
+            Regards,
+            Circle CI
+          from: rmuir@realdecoy.com
+          subject: Example mail from mailer-orb
+          to: raffiquemuir@yahoo.com
