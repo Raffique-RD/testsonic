@@ -1,14 +1,14 @@
 version: 2.1
-orbs:
-  mailer-orb: sudiptog81/mailer-orb@1.0.0
+jobs:
+  report-sender:
+    machine:
+      image: "ubuntu-2004:current"
+    steps:
+      - run: |
+          ls
+          docker pull aldanial/cloc
+          docker pull owasp/dependency-check
 workflows:
-  use-my-orb:
+  tasks:
     jobs:
-      - mailer-orb/mail:
-          body: |-
-            Sample Mail
-            Regards,
-            Circle CI
-          from: rmuir@realdecoy.com
-          subject: Example mail from mailer-orb
-          to: raffiquemuir@yahoo.com
+      - report-sender
