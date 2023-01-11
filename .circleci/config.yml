@@ -15,8 +15,7 @@ jobs:
       - checkout
       - run:
           command: |
-           /usr/src/cloc ./ --out=cloc.txt
-           ls
+           /usr/src/cloc ./ --out=cloc.txt\
       - store_artifacts:
           path: cloc.txt
           destination: reports
@@ -28,12 +27,13 @@ workflows:
     jobs:
       - cloc
 
-  # owasp:
-  #   jobs:
-  #     - owasp/commandline_owasp_dependency_check:
-  #         arguments: >-
-  #           --scan ./ --failOnCVSS 7
-  #         context: global              
+  owasp:
+    jobs:
+      - owasp/commandline_owasp_dependency_check:
+          persist_to_workspace: true
+          arguments: >-
+            --scan ./ --failOnCVSS 7
+          context: global              
 
   # email:
   #   jobs:
