@@ -18,8 +18,8 @@ jobs:
            /usr/src/cloc ./ --out=cloc.txt
            ls
       - store_artifacts:
-          path: reports/cloc.txt
-
+          path: cloc.txt
+          destination: reports
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
