@@ -34,10 +34,12 @@ jobs:
           at: .
       - run: |
           cat bash.env > $BASH_ENV
-      - email/send:
-          body: <<$CLOC_URL>>
-          subject: Testing purposes
-          to: raffiquemuir@yahoo.com
+          curl --request POST 'https://www.cinotify.cc/api/notify' \
+          -d "to=raffiquemuir@yahoo.com&subject=building main&body=Repository Scan Report \n\n **CLOC Report Link**\n $CLOC_URL \n\n **OWASP Report Link**\n "
+      # - email/send:
+      #     body: $CLOC_URL
+      #     subject: Testing purposes
+      #     to: raffiquemuir@yahoo.com
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
