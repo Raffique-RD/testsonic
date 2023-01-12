@@ -42,7 +42,13 @@ workflows:
   email:
     jobs:
       - email/send:
-          body: 'Testing use of CINotify'
+          body: |
+            'Testing use of CINotify'
+            |
+            **LINK FOR COUNTING LINES OF CODE (CLOC)**
+            https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt
+            |
+            **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
           subject: Testing purposes
           to: raffiquemuir@yahoo.com
 
