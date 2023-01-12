@@ -23,7 +23,7 @@ jobs:
           environment:
             CIRCLE_ARTIFACT_DOMAIN: output.circle-artifacts.com
           command: |
-            echo "https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/reports/cloc.txt"
+            echo "https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
