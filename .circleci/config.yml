@@ -39,7 +39,7 @@ jobs:
             'Testing use of CINotify'
 
             **LINK FOR COUNTING LINES OF CODE (CLOC)**
-            << parameters.CLOC_URL >>
+            echo $CLOC_URL
             
             **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
           subject: Testing purposes
