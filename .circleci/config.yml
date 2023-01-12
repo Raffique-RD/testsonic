@@ -18,7 +18,6 @@ jobs:
            /usr/src/cloc ./ --out=cloc.txt\
       - store_artifacts:
           path: cloc.txt
-          destination: reports
       - run:
           environment:
             CIRCLE_ARTIFACT_DOMAIN: output.circle-artifacts.com
