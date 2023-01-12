@@ -35,13 +35,7 @@ jobs:
       - run: |
           cat bash.env > $BASH_ENV
       - email/send:
-          body: |
-            'Testing use of CINotify'
-
-            **LINK FOR COUNTING LINES OF CODE (CLOC)**
-            echo $CLOC_URL
-            
-            **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
+          body: echo "$CLOC_URL"
           subject: Testing purposes
           to: raffiquemuir@yahoo.com
 
