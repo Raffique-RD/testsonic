@@ -18,11 +18,32 @@ jobs:
            /usr/src/cloc ./ --out=cloc.txt\
       - store_artifacts:
           path: cloc.txt
-      - run:
-          environment:
-            CIRCLE_ARTIFACT_DOMAIN: output.circle-artifacts.com
-          command: |
-            echo "https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt"
+      - run: | 
+          echo "export CLOC_URL=https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt" >> $BASH_ENV
+          cp $BASH_ENV bash.env
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bash.env
+
+  email:
+    docker:
+      - image: cimg/base:2023.01
+    steps:
+      - attach_workspace:
+          at: .
+      - run: |
+          cat bash.env > $BASH_ENV
+      - email/send:
+          body: |
+            'Testing use of CINotify'
+            |
+            **LINK FOR COUNTING LINES OF CODE (CLOC)**
+            $CLOC_URL
+            |
+            **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
+          subject: Testing purposes
+          to: raffiquemuir@yahoo.com
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -31,24 +52,28 @@ workflows:
     jobs:
       - cloc
 
-  owasp:
-    jobs:
-      - owasp/commandline_owasp_dependency_check:
-          persist_to_workspace: true
-          arguments: >-
-            --scan ./ --failOnCVSS 7
-          context: global              
+  # owasp:
+  #   jobs:
+  #     - owasp/commandline_owasp_dependency_check:
+  #         persist_to_workspace: true
+  #         arguments: >-
+  #           --scan ./ --failOnCVSS 7
+  #         context: global 
 
   email:
     jobs:
-      - email/send:
-          body: |
-            'Testing use of CINotify'
-            |
-            **LINK FOR COUNTING LINES OF CODE (CLOC)**
-            https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt
-            |
-            **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
-          subject: Testing purposes
-          to: raffiquemuir@yahoo.com
+      - email             
+
+  # email:
+  #   jobs:
+  #     - email/send:
+  #         body: |
+  #           'Testing use of CINotify'
+  #           |
+  #           **LINK FOR COUNTING LINES OF CODE (CLOC)**
+  #           https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt
+  #           |
+  #           **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
+  #         subject: Testing purposes
+  #         to: raffiquemuir@yahoo.com
 
