@@ -48,32 +48,12 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  cloc:
+
+  report:
     jobs:
       - cloc
+      - email:
+          requires:
+            - cloc            
 
-  # owasp:
-  #   jobs:
-  #     - owasp/commandline_owasp_dependency_check:
-  #         persist_to_workspace: true
-  #         arguments: >-
-  #           --scan ./ --failOnCVSS 7
-  #         context: global 
-
-  email:
-    jobs:
-      - email             
-
-  # email:
-  #   jobs:
-  #     - email/send:
-  #         body: |
-  #           'Testing use of CINotify'
-  #           |
-  #           **LINK FOR COUNTING LINES OF CODE (CLOC)**
-  #           https://${CIRCLE_ARTIFACT_DOMAIN}/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/${CIRCLE_NODE_INDEX}/cloc.txt
-  #           |
-  #           **LINK FOR OWASP DEPENDENCY CHECK (OWASP)**
-  #         subject: Testing purposes
-  #         to: raffiquemuir@yahoo.com
 
